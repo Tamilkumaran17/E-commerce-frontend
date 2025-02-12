@@ -1,0 +1,91 @@
+.signin
+{
+    width: 100%;
+    height: 100vh;
+    background:wheat ;
+    padding-top: 100px;
+    margin-bottom: 100px;
+
+}
+
+.signin-container{
+    width: 580px;
+    height: max-content;
+    background:white ;
+    margin: auto;
+    padding: 40px 60px;
+    border-radius: 10px;
+}
+
+.signin-container h1{
+    margin: 20px 0px;
+    text-align: center;
+
+}
+
+.signin-fields{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 30px;
+
+}
+
+.signin-fields input{
+    height: 68px;
+    width: 100%;
+    padding-left: 20px;
+    border: 1px solid rgb(145, 131, 131);
+    outline: none;
+    color: gray;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.signin-container .continue{
+    width: 600px;
+    height: 72px;
+    color: white;
+    background:#53bd1a ;
+    margin-top: 30px;
+    border: none;
+    font-size: 24px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: .2s ease-out;
+
+}
+.signin-container .continue:hover{
+    background: #52e32e;
+
+}
+.signin-login{
+    margin-top: 20px;
+    color: rgb(74, 70, 70);
+    font-size: 18px;
+    font-weight: 500;
+}
+.signin-login .signin-link{
+    text-decoration: none;
+}
+
+.signin-login span{
+    color: rgb(40, 47, 255);
+    font-weight: 600;
+    cursor: pointer;
+}
+.signin-login span:hover{
+    color: rgb(55, 28, 207);
+
+}
+
+.signin-agree{
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+    gap: 20px;
+    color: rgb(86, 84, 84);
+    font-size: 18px;
+    font-weight: 500;    
+}

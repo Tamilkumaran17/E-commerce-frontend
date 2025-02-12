@@ -1,0 +1,40 @@
+.item{
+    width: 350px;
+    border-radius: 20px;
+
+    
+}
+
+.item p{
+    margin: 6px 0px;
+    margin-left: 10px; 
+}
+.item .item-prices{
+    display: flex;
+    gap: 20px;
+
+}
+
+.item .item-price-new{
+    color: rgb(54, 53, 53);
+    font-size: 18px;
+    font-weight: 600;
+    margin-left: 10px; 
+
+
+}
+
+.item .item-price-old{
+    color: gray;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: line-through;
+}
+.item:hover{
+    transform: scale(1.05);
+    border-radius: 10px;
+    transition: .6s;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    
+    
+}

@@ -1,0 +1,130 @@
+.cartitems{
+    margin: 100px 170px;
+}
+
+.cartitems hr{
+    height: 3px;
+    background: rgb(98, 94, 94);
+    border: 0;
+}
+
+.main
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    gap: 75px;
+    pad: 20px 0px;
+    color: gray;
+    font-size:18px ;
+    font-weight: 600;
+}
+.format{
+    font-size: 17px;
+    font-weight: 500;
+
+}
+.format .title{
+    font-size: 14px;
+}
+.product-icon{
+    height: 62px;
+
+}
+.removeicon{
+    width: 15px;
+    margin: 0px 40px;
+    cursor: pointer;
+    transition: .2s ease-out;
+}
+.removeicon:hover{
+    transform: scale(1.1);
+}
+.format .quantity{
+    /* margin-top: 20px; */
+    width: 64px;
+    height: 50px;
+    border: 2px solid rgb(198, 184, 159);
+    background: white;
+    font-weight: 600;
+    color: black;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+.down{
+    display: flex;
+    margin: 100px 0px;
+
+}
+.total{
+    flex:1 ;
+    display: flex;
+    flex-direction: column;
+    margin-right: 200px;
+    gap: 40px;
+}
+
+.total-item{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0px;
+}
+
+.proceed{
+    width: 262px;
+    height: 60px;
+    outline: none;
+    border: none;
+    background:#53bd1a ;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .2s ease-out;
+
+}
+.proceed:hover
+{
+    background: #52e32e;
+}
+
+
+
+.promocode{
+    flex: 1;
+    font-size: 15px;
+    font-weight: 500;
+}
+.promocode p{
+    color: rgb(70, 68, 68);
+}
+
+.promobox{
+    width: 504px;
+    margin-top: 15px;
+    padding-left: 20px;
+    height: 58px;
+    background: rgb(211, 203, 203);
+}
+.promobox input{
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 15px;
+    width: 330px;
+    height: 50px;
+}
+.promobox .submit{
+    width: 170px;
+    height: 58px;
+    font-size: 15px;
+    background:black ;
+    color: white;
+    cursor: pointer;
+}
+
