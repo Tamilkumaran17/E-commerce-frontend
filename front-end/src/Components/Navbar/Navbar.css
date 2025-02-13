@@ -58,11 +58,18 @@
     font-weight: 600;
     background:white;
     align-items: center;
+    cursor: pointer;
 
 
 }
 .nav-login-cart .login:active{
     background: #52e32e;
+}
+
+.nav-login-cart .username .name{
+    font-weight: 600;
+    font-size: 20px;
+    text-transform: uppercase;
 }
 .nav-cart-count{
     width: 22px;

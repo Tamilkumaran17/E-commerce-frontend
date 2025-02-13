@@ -1,9 +1,51 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './CartItems.css'
 import { ShopContext } from '../../Context/ShopContext';
 import Remove_icon from '../Assets/cart_cross_icon.png';
+import { toast } from 'react-toastify';
+
 const CartItems =()=>{
-    const {getTotalCartAmount,all_product,cartItems,removeFromCart} = useContext(ShopContext);
+    const {all_product,cartItems,removeFromCart} = useContext(ShopContext);
+
+    const [quantities,setQuantities] = useState(cartItems);
+
+    const increment = (id) =>{
+        setQuantities((prev)=>({
+            ...prev,
+            [id]: (prev[id]||0) + 1,
+        }));
+    };
+
+    const decrement = (id)=>{
+        setQuantities((prev) =>{
+            if(prev[id] >  1) return { ...prev, [id]: prev[id]-1 };
+            else{
+                const updated = {...prev};
+                // delete updated[id];
+                return updated;
+            }
+        })
+    };
+
+    const handleRemove = (id) => {
+        removeFromCart(id); // Remove from context
+        setQuantities((prev) => {
+            const updatedQuantities = { ...prev };
+            delete updatedQuantities[id]; // Ensure the total updates correctly
+            return updatedQuantities;
+        });
+        toast.error("Removed")
+        
+    };
+    
+
+    const calculateTotal = ()=>{
+        return all_product.reduce((tot,item)=>{
+            return tot + (quantities[item.id] || 0) * item.new_price;
+        },0);
+    };
+
+
     return( 
         <div className='cartitems'>
             <div className="main">
@@ -25,9 +67,13 @@ const CartItems =()=>{
                                 <img src={e.image} alt="" className='product-icon' />
                                 <p className='title'>{e.name}</p>
                                 <p>₹{e.new_price} </p>
-                                <button className='quantity'>{cartItems[e.id]} </button>
-                                <p>₹{e.new_price * cartItems[e.id]} </p>
-                                <img className='removeicon' src={Remove_icon} onClick={()=>{removeFromCart(e.id)}} alt="" />
+                               <div className="quantity-controls">
+                                    <button onClick={() => decrement(e.id)} className='minus'>-</button>
+                                    <span className="quantity">{quantities[e.id] || 0}</span>
+                                    <button onClick={() => increment(e.id)} className='plus'>+</button>
+                                </div>
+                                <p style={{fontWeight:'bold'}}>₹{e.new_price * (quantities[e.id] || 0)}</p>
+                                <img className='removeicon' src={Remove_icon} onClick={()=>{handleRemove(e.id)}} alt="" />
                             </div>
                             <hr />
                         </div>
@@ -44,7 +90,7 @@ const CartItems =()=>{
                         <div>
                             <div className="total-item">
                                 <p>Subtotal</p>
-                                <p>₹{getTotalCartAmount()}</p>
+                                <p>₹{calculateTotal()}</p>
                             </div>
                             <hr />
                             <div className="total-item">
@@ -54,7 +100,7 @@ const CartItems =()=>{
                             <hr />
                             <div className="total-item">
                                 <h3>Total</h3>
-                                <h3>₹{getTotalCartAmount()}</h3>
+                                <h3>₹{calculateTotal()}</h3>
                             </div>
                         </div>
                         <button className='proceed'>PROCEED TO CHECKOUT</button>

@@ -3,11 +3,26 @@ import './ProductDisplay.css'
 import star_icon from '../Assets/star_icon.png';
 import star_dull_icon from '../Assets/star_dull_icon.png';
 import { ShopContext } from '../../Context/ShopContext';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 const ProductDisplay =(props)=>{
     const {product} = props;
-    const {addToCart} = useContext(ShopContext);
+    const {addToCart,cartItems} = useContext(ShopContext);
+    const navigate = useNavigate();
+
+    const inCart = cartItems[product.id] > 0;
+
+    const handleButtonClick =()=>{
+        if(inCart)
+            navigate('/cart');
+        else{
+            addToCart(product.id);
+        toast.info("Added to cart");
+        }
+        
+    }
     return( 
         <div className='productdisplay'>
             <div className="productdisplay-left">
@@ -40,8 +55,9 @@ const ProductDisplay =(props)=>{
                     </div>
                 </div>
                     <div className="description">
+                        <p>{product.descrition}</p>
                     
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam animi, quae natus aspernatur esse cumque ipsam nemo. Delectus repellat odio quasi laboriosam. Ullam velit laudantium ea excepturi atque officiis non!
+                        {/* Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam animi, quae natus aspernatur esse cumque ipsam nemo. Delectus repellat odio quasi laboriosam. Ullam velit laudantium ea excepturi atque officiis non! */}
                     </div>
                     <div className="size">
                         <h1>Select Size</h1>
@@ -53,7 +69,9 @@ const ProductDisplay =(props)=>{
                                 <div>XXL</div>
                         </div>
                     </div>
-                    <button className='butt' onClick={()=>{addToCart(product.id)}}>ADD TO CART</button>
+                    <button className={`butt ${inCart ? "go-to-cart" : "add-to-cart"} `} onClick={handleButtonClick}>
+                         {inCart ? "GO TO CART" :  "ADD TO CART"}
+                    </button>
                     <p className='category'><span>Category: </span>Women, T-Shirt, Crop Top</p>
                     <p className='category'><span>Tags: </span>Modern , latest</p>
                 

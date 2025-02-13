@@ -4,11 +4,13 @@ import logo from '../Assets/logo.png'
 import cart_icon from '../Assets/cart_icon.png';
 import { Link } from "react-router-dom";
 import { ShopContext } from "../../Context/ShopContext";
+import { UserContext } from "../../Context/UserContext";
 
 
 
 
 const Navbar =()=>{
+    const {user} = useContext(UserContext);
 
     const [menu,setMenu] = useState("shop");
     const {getTotalCartItems} = useContext(ShopContext);
@@ -17,7 +19,7 @@ const Navbar =()=>{
             <div className="nav-logo">
             <Link style={{textDecoration: 'none'}} to='/'> <img src={logo} alt=""/></Link>
                
-            <Link style={{textDecoration: 'none'}} to='/'><p>SHOPY</p></Link>
+            <Link style={{textDecoration: 'none'}} to='/'><p>CLOTHSY</p></Link>
             </div>
             <ul className="nav-menu">
                 <li onClick={()=>{setMenu("shop")}}><Link style={{textDecoration: 'none'}} to='/'>Shop</Link>{menu==="shop" ? <hr/>:<></>} </li>
@@ -26,7 +28,12 @@ const Navbar =()=>{
                 <li onClick={()=>{setMenu("kids")}}><Link style={{textDecoration: 'none'}} to='/kids'>Kids</Link>{menu==="kids" ? <hr/>:<></>}</li>
             </ul>
             <div className="nav-login-cart">
-                <Link to='/login'><button className="login">Login</button></Link>
+                {user ? (
+                    <p className="username"> Welcome, <span className="name">{user}</span></p>
+                ) : (
+                    <Link to='/login'><button className="login">Login</button></Link>
+                )}
+
                 <Link to='/cart'><img src={cart_icon} alt="" /></Link>
                 <div className="nav-cart-count">
                     {getTotalCartItems()}

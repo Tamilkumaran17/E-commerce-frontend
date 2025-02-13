@@ -108,15 +108,30 @@
     font-size: 16px;
     font-weight: 600;
     color: white;
-    background:#53bd1a ;
     margin-bottom: 40px;
     cursor: pointer;
     border: none;
     outline: none;
     border-radius: 5px;
 }
-.butt:hover{
+.add-to-cart{
+    background:#53bd1a ;
+    color: white;
+}
+.add-to-cart:hover{
     background: #52e32e;
+
+}
+.go-to-cart{
+    background: #f7ff1c;
+    color: rgb(81, 79, 79);
+}
+.go-to-cart:hover{
+    background: #f1e83e;
+
+}
+.butt:hover{
+    
     transition: .2s ease-out;
 }
 
